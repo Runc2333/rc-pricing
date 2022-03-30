@@ -1,0 +1,72 @@
+{
+    "name": "rc-pricing",
+    "version": "0.1.0",
+    "author": "Runc2333",
+    "license": "GPL-3.0-or-later",
+    "private": true,
+    "scripts": {
+        "serve": "vue-cli-service serve",
+        "build": "vue-cli-service build",
+        "lint": "vue-cli-service lint",
+        "electron:build": "vue-cli-service electron:build",
+        "electron:serve": "vue-cli-service electron:serve",
+        "electron:rebuild": "electron-rebuild",
+        "postinstall": "electron-builder install-app-deps",
+        "postuninstall": "electron-builder install-app-deps"
+    },
+    "main": "background.js",
+    "dependencies": {
+        "@fontsource/noto-sans-sc": "^4.5.2",
+        "@fontsource/roboto": "^4.5.1",
+        "@fontsource/zcool-kuaile": "^4.5.1",
+        "@fortawesome/fontawesome-svg-core": "^1.2.36",
+        "@fortawesome/free-brands-svg-icons": "^5.15.4",
+        "@fortawesome/free-regular-svg-icons": "^5.15.4",
+        "@fortawesome/free-solid-svg-icons": "^5.15.4",
+        "@fortawesome/vue-fontawesome": "^3.0.0-5",
+        "axios": "^0.26.1",
+        "core-js": "^3.8.3",
+        "lodash": "^4.17.21",
+        "robotjs": "^0.6.0",
+        "vue": "^3.2.13",
+        "vue-router": "^4.0.3",
+        "win32-api": "^9.6.0"
+    },
+    "devDependencies": {
+        "@babel/core": "^7.12.16",
+        "@babel/eslint-parser": "^7.12.16",
+        "@vue/cli-plugin-babel": "~5.0.0",
+        "@vue/cli-plugin-eslint": "~5.0.0",
+        "@vue/cli-plugin-router": "~5.0.0",
+        "@vue/cli-service": "~5.0.0",
+        "electron": "^13.0.0",
+        "electron-devtools-installer": "^3.1.0",
+        "electron-rebuild": "^3.2.7",
+        "eslint": "^7.32.0",
+        "eslint-plugin-vue": "^8.0.3",
+        "vue-cli-plugin-electron-builder": "~2.1.1"
+    },
+    "eslintConfig": {
+        "root": true,
+        "env": {
+            "node": true
+        },
+        "extends": [
+            "plugin:vue/vue3-essential",
+            "eslint:recommended"
+        ],
+        "parserOptions": {
+            "parser": "@babel/eslint-parser"
+        },
+        "rules": {
+            "semi": "error",
+            "vue/multi-word-component-names": 0
+        }
+    },
+    "browserslist": [
+        "> 1%",
+        "last 2 versions",
+        "not dead",
+        "not ie 11"
+    ]
+}
