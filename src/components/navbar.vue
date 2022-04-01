@@ -8,8 +8,13 @@
         </span>
         <!-- 搜索框 -->
         <form class="search" @submit="search">
-          <input type="checkbox" />
-          <input type="text" placeholder="搜索" />
+          <input type="checkbox" ref="con" @change="search" />
+          <input
+            type="text"
+            placeholder="搜索"
+            ref="query"
+            @input="debounced_search"
+          />
         </form>
         <!-- 用户资料 -->
         <!-- 未登录 -->
@@ -107,15 +112,25 @@ export default {
       });
     }, 50),
     search: function (e) {
-      e.preventDefault();
+      if (e) e.preventDefault();
       this.$router.push({
         path: "/search",
         query: {
-          con: e.target[0].value === "on" ? 0 : 1,
-          query: e.target[1].value,
+          con: this.$refs.con.checked ? 0 : 1,
+          query: this.$refs.query.value,
         },
       });
     },
+    debounced_search: debounce(function (e) {
+      if (e) e.preventDefault();
+      this.$router.push({
+        path: "/search",
+        query: {
+          con: this.$refs.con.checked ? 0 : 1,
+          query: this.$refs.query.value,
+        },
+      });
+    }, 500),
   },
 };
 </script>

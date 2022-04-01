@@ -76,6 +76,7 @@ export default {
     search() {
       this.results = [];
       this.query = get_query_arg("query");
+      console.log(get_query_arg("con"));
       if (!this.query) return;
       this.pending = true;
       document.title = `搜索: ${this.query}`;
@@ -84,11 +85,16 @@ export default {
       console.log(get_query_arg("query"));
       form.append("con", get_query_arg("con"));
       axios({
-        url: "http://leeuu.hsk163.cn/leeuu_api/selectsupda.ashx?ver=1.8",
+        url: "http://leeuu.hsk163.cn/leeuu_api/selectsupda.ashx?ver=1.7",
         method: "POST",
-        data: form,
+        data: `name=${encodeURIComponent(this.query)}&con=${get_query_arg(
+          "con"
+        )}`,
         headers: {
-          "Content-Type": `multipart/form-data; boundary=${form._boundary}`,
+          "Content-Type": `application/x-www-form-urlencoded`,
+          "User-Agent":
+            "Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/78.0.3904.108 Safari/537.36",
+          Expect: "100-continue",
         },
       })
         .then((res) => {

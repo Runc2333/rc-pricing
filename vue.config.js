@@ -17,7 +17,7 @@ module.exports = defineConfig({
                             "target": "nsis",
                             "arch": [
                                 "ia32",
-                                "x64"
+                                // "x64"
                             ]
                         }
                     ]

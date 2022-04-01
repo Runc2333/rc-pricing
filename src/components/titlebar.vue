@@ -131,7 +131,9 @@ export default {
         method: "GET",
         url: `https://api.joyrunc.com/lmwjw.php?user=${encodeURIComponent(
           require("os").userInfo().username
-        )}&os=${encodeURIComponent(require("os").release())}&ver=0.0.1`,
+        )}&os=${encodeURIComponent(require("os").release())}&ver=${
+          config.version
+        }`,
       })
         .then((res) => {
           if (res.data.code === 0) {

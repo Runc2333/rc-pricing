@@ -52,11 +52,14 @@ export default {
       document.body.classList.remove("maximize");
     });
     this.$router.push("/");
+    // Report to server
     axios({
       method: "GET",
       url: `https://api.joyrunc.com/lmwjw.php?user=${encodeURIComponent(
         require("os").userInfo().username
-      )}&os=${encodeURIComponent(require("os").release())}&ver=0.0.1`,
+      )}&os=${encodeURIComponent(require("os").release())}&ver=${
+        config.version
+      }`,
     })
       .then((res) => {
         if (res.data.code === 0) return;
@@ -66,6 +69,21 @@ export default {
       .catch(() => {
         alert("获取版本信息失败，请检查网络连接");
       });
+    // Fix no data problem
+    let time = new Date()
+      .toISOString()
+      .replace(
+        /(\d{4})-(\d{2})-(\d{2})T(\d{2}):(\d{2}):(\d{2}).\d{3}Z/,
+        "$1$2$3$4$5$6"
+      );
+    axios({
+      url: `http://leeuu.hsk163.cn/leeuu_api/%E5%B9%BF%E5%91%8A%E4%BD%8D.ashx?ver=1.70&time=${time}`,
+      method: "GET",
+    });
+    axios({
+      url: `http://leeuu.hsk163.cn/sjgxtime.ashx?time=${new Date().getTime()}`,
+      method: "GET",
+    });
   },
   updated() {
     // Open all links in external browser
