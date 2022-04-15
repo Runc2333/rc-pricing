@@ -1,7 +1,7 @@
 import { clipboard } from 'electron';
 import { U } from 'win32-api';
 import robot from 'robotjs';
-import * as tools from '../utils/tools.js';
+import * as tools from '../../../utils/tools.js';
 
 const user32 = U.load();
 

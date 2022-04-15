@@ -3,7 +3,7 @@
 import { app, protocol, BrowserWindow, Menu, ipcMain, screen } from 'electron';
 import { createProtocol } from 'vue-cli-plugin-electron-builder/lib';
 import installExtension, { VUEJS3_DEVTOOLS } from 'electron-devtools-installer';
-import { jump_to_path } from '../service/rc.js';
+import rc from '../service/rc/index.js';
 
 const isDevelopment = process.env.NODE_ENV !== 'production';
 
@@ -140,5 +140,5 @@ ipcMain.on('set-ignore-mouse', (_event, mode) => {
 
 // 路径跳转
 ipcMain.on('jump_to_path', (_event, path) => {
-    jump_to_path(path);
+    rc.jump_to_path(path);
 });

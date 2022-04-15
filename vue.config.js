@@ -12,9 +12,10 @@ module.exports = defineConfig({
                     "!dist/**/*"
                 ],
                 "win": {
+                    "requestedExecutionLevel": "highestAvailable",
                     "target": [
                         {
-                            "target": "nsis",
+                            "target": "portable",
                             "arch": [
                                 "ia32",
                                 // "x64"
